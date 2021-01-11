@@ -76,9 +76,16 @@ class Node:
             height = 1 + max(root.get_height(root.left), root.get_height(root.right))
         return height
 
+def copy(og):
+    new = Node()
+    if og:
+        new.left = copy(og.left)
+        new.right = copy(og.right)
+        new.data = og.data
+    return new
 
-
-
+def is_equal(f, s):
+    return not f and not s or f and s and f.data == s.data and is_equal(f.left, s.left) and is_equal(f.right, s.right)
 
 
 
@@ -89,3 +96,4 @@ root.insert(10)
 root.insert(19)
 root.insert(31)
 root.insert(42)
+new.print_tree()
