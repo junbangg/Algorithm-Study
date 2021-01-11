@@ -43,14 +43,29 @@ class Node:
             root.inorder(root.left)
             print(root.data)
             root.inorder(root.right)
-    
+
     def postorder(self, root):
         if root:
             root.postorder(root.left)
             root.postorder(root.right)
             print(root.data)
 
-        
+    def iterative_inorder(self, root):
+        current = root
+        stack = []
+        while 1:
+            if current is not None:
+                stack.append(current)
+                current = current.left
+            elif stack:
+                current = stack.pop()
+                print(current.data , end = " ")
+                current = current.right
+            else:
+                break
+
+
+
 
 
 root = Node(27)
