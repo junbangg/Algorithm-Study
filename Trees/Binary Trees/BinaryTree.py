@@ -64,6 +64,20 @@ class Node:
             else:
                 break
 
+    def get_count(self, root):
+        count = 0
+        if root:
+            count = 1 + root.get_count(root.left) + root.get_count(root.right)
+        return count
+
+    def get_height(self, root):
+        height = 0
+        if root:
+            height = 1 + max(root.get_height(root.left), root.get_height(root.right))
+        return height
+
+
+
 
 
 
@@ -75,4 +89,3 @@ root.insert(10)
 root.insert(19)
 root.insert(31)
 root.insert(42)
-print(root.inorderTraversal(root))
