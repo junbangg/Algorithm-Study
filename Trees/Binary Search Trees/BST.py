@@ -27,6 +27,36 @@ def insert(root, key):
     return root
 
 
+def minValueNode(node):
+    current = node
+    while current.left is not None:
+        current = current.left
+    return current
+
+
+def delete(root, key):
+    if not root:
+        return root
+
+    if key < root.val:
+        root.left = delete(root.left, key)
+    elif key > root.val:
+        root.right = delete(root.right, key)
+    else:
+        if not root.left:
+            temp = root.left
+            root = None
+            return temp
+        elif not root.right:
+            temp = root.right
+            root = None
+            return temp
+        temp = minValueNode(root.right)
+        root.key = temp.key
+        root.right = delete(root.right, temp.key)
+    return root
+
+
 def inorder(root):
     if root:
         inorder(root.left)
