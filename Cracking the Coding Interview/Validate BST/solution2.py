@@ -7,12 +7,12 @@
 def validate(root, minn, maxn):
     if not root:
         return True
-    if minn and root.val < minn or maxn and root.val > maxn:
+    if minn and root.key < minn or maxn and root.key > maxn:
         return False
-    if !validate(root.left, minn, root.val) or !validate(root.right, root.val, maxn):
+    if not validate(root.left, minn, root.key) or not validate(root.right, root.key, maxn):
         return False
     return True
 
 
-def solution(root):
+def solution2(root):
     return validate(root, None, None)
