@@ -1,7 +1,7 @@
 # 4.5 Validate BST: Implement a function to check if a Binary Tree is a BST.
 # from mySolution import mySolution
 # from solution1 import solution1
-from solution2 import solution2
+# from solution2 import solution2
 
 
 class Node():
@@ -64,9 +64,9 @@ for v in vals:
 # test mySolution -----------------------
 
 # regular
-# print(mySolution(regularRoot))
+# print(validate(regularRoot))
 # BST
-# print(solution(BSTroot))
+# print(validate(BSTroot))
 
 # test solution1-----------------------
 
@@ -80,4 +80,4 @@ for v in vals:
 # regular
 # print(solution2(regularRoot))
 # BST
-print(solution2(BSTroot))
+# print(solution2(BSTroot))
