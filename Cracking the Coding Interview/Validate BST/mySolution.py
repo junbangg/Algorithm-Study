@@ -6,13 +6,11 @@
 def validate(root):
     if root:
         if root.left and root.left.key > root.key:
-            print("false")
             return False
         if root.right and root.right.key < root.key:
-            print("false")
             return False
-        return validate(root.left)
-        return validate(root.right)
+        validate(root.left)
+        validate(root.right)
 
 
 def mySolution(root):
