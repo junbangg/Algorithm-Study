@@ -15,7 +15,7 @@ def validate(root):
         return validate(root.right)
 
 
-def solution(root):
+def mySolution(root):
     if validate(root) is None:
         return True
     else:
