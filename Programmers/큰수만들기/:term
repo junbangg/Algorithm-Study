@@ -1,6 +1,0 @@
-
-test = '2389482'
-lst = list(test)
-finalList = [lst[y:y+len(lst)-x] for x in range(len(lst)) for y in range(x+1)]
-
-print(finalList)
