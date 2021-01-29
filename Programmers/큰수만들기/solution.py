@@ -1,12 +1,8 @@
 def solution(number, k):
-    n = list(map(int, list(number)))
-    big = sorted(list(n), reverse = True)[k-1]
-    i, count = 0, 0
-    while i < len(n) and count < k:
-        if n[i] < big:
-            n.pop(i)
-            count += 1
-            i = 0
-        else:
-            i += 1
-    return ''.join(map(str,n))
+    s = []
+    for i in range(len(number)):
+        while s and k > 0 and s[-1] < number[i]:
+            s.pop()
+            k -= 1
+        s.append(number[i])
+    return ''.join(s[:len(number) - k])
