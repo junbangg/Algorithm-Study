@@ -1,5 +1,3 @@
-
-
 def inorder(root, prev, val):
     if root:
         inorder(root, prev, val)
