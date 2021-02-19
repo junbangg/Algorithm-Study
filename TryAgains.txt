@@ -22,3 +22,6 @@ https://programmers.co.kr/learn/courses/30/lessons/42860#
 
 Leet Code - Letter Combinations of a phone number
 https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+
+Cracking the Coding Interview - Triple Step
+pg 134.
