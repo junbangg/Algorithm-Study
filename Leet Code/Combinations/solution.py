@@ -12,3 +12,18 @@ class Solution:
 
         dfs([], 1, k)
         return results
+
+#or
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        results = []
+        def recurse(elements, start):
+            if len(elements) == k:
+                results.append(elements[:])
+                return
+            for i in range(start, n+1):
+                elements.append(i)
+                recurse(elements, i+1)
+                elements.pop()
+        recurse([], 1)
+        return results
