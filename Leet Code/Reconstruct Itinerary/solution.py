@@ -23,3 +23,16 @@ class Solution:
         dfs("JFK")
         return route[::-1]
 
+# Iterative approach
+class Solution:
+    def findItinerary(self, tickets: List[List[str]]) - > List[str]:
+        ticket_map = collections.defaultdict(list)
+        for fo, to in sorted(tickets):
+            ticket_map[fo].append(to)
+        route, stack = [], ["JFK"]
+        while stack:
+            while stack[-1]:
+                stack.append(ticket_map[stack[-1]].pop(0))
+            route.append(stack.pop())
+        return route[::-1]
+
