@@ -32,5 +32,8 @@ https://leetcode.com/problems/trapping-rain-water/
 Leet Code - Combination Sum
 https://leetcode.com/problems/combination-sum/
 
-Leet Code - Reconstruct Itinerary
+Leet Code - Reconstruct Itinerary  (1)
 https://leetcode.com/problems/reconstruct-itinerary/
+
+Leet Code - Course Schedule
+https://leetcode.com/problems/course-schedule/
