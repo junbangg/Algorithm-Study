@@ -25,9 +25,6 @@ class Solution:
                "]" : "[",
                "}" : "{" }
         stack = []
-        #edge case
-        if not s or len(s) % 2 != 0:
-            return False
         for p in s:
             if p not in dic:
                 stack.append(p)
