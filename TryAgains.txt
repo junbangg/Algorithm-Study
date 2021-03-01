@@ -40,3 +40,6 @@ https://leetcode.com/problems/course-schedule/
 
 Leet Code - Remove Duplicate letters
 https://leetcode.com/problems/remove-duplicate-letters/submissions/
+
+Leet Code - Daily Temperatures
+https://leetcode.com/problems/daily-temperatures/submissions/
