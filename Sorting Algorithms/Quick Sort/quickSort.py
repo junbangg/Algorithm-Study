@@ -11,7 +11,10 @@ def quickSort(nums, low, high):
 
     if low < high:
         pivot = partition(low, high)
-        quicksort(nums, low, pivot - 1)
-        quicksort(nums, pivot + 1, high)
+        quickSort(nums, low, pivot - 1)
+        quickSort(nums, pivot + 1, high)
 
     return nums
+
+nums = [4,3,2,2,3,1]
+print(quickSort(nums, 0, len(nums)-1))
