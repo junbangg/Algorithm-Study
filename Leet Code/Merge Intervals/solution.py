@@ -1,4 +1,4 @@
-# First Attempt
+# First Attempt - 88 - 92 ms
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         intervals.sort(key = lambda x: x[0])
@@ -27,8 +27,21 @@ class Solution:
             i += 1
         return answers
 
-# Second Attempt
+# Second Attempt - In Place Merge 80-84 ms faster than 91.78 %
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        # sort intervals
         # edge case
+        if len(intervals) == 1:
+            return intervals
+        # sort and reverse intervals
+        intervals = sorted(intervals, key = lambda x : x[0])[::-1]
+        p2 = len(intervals) - 1
+        # merge
+        for p1 in range(p2 - 1, -1, -1):
+            # 비교
+            if intervals[p2][1] >= intervals[p1][0]:
+                merged = [min(intervals[p1][0], intervals[p2][0]), max(intervals[p1][1], intervals[p2][1])]
+                intervals.pop(p2)
+                intervals[p1] = merged
+            p2 -= 1
+        return intervals[::-1]
