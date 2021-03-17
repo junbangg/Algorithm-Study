@@ -32,3 +32,15 @@ class Solution:
             cur.next, head.next, head = head, cur.next, head.next
             cur = root
         return cur.next
+
+# Optimized Solution
+class Solution:
+    def insertionSortList(self, head: ListNode) -> ListNode:
+        cur = root = ListNode()
+        while head:
+            while cur.next and cur.next.val < head.val:
+                cur = cur.next
+            cur.next, head.next, head = head, cur.next, head.next
+            if head and cur.val > head.val:
+                cur = root
+        return root.next
