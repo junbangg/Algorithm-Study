@@ -70,3 +70,32 @@ class Solution:
                 j -= 1
             i += 1
         return str(int(''.join(map(str, nums))))
+
+# Fastest Approach
+class Solution:
+    @staticmethod
+    def compare(n1, n2):
+        return n1 + n2 < n2 + n1
+    def largestNumber(self, nums: List[int]) -> str:
+        nums = sorted(map(str, nums), reverse = True)
+        i = 1
+        while i < len(nums):
+            j = i
+            while j > 0 and self.compare(nums[j-1], nums[j]):
+                nums[j - 1], nums[j] = nums[j], nums[j - 1]
+                j -= 1
+            i += 1
+        return str(int(''.join(nums)))
+
+# Fastest Approach switch to for loop
+class Solution:
+    @staticmethod
+    def compare(n1, n2):
+        return n1 + n2 < n2 + n1
+    def largestNumber(self, nums: List[int]) -> str:
+        nums = sorted(map(str, nums), reverse = True)
+        for i in range(1, len(nums)):
+            for j in range(i, 0, -1):
+                if self.compare(nums[j-1], nums[j]):
+                    nums[j-1], nums[j] = nums[j], nums[j-1]
+        return str(int(''.join(nums)))
