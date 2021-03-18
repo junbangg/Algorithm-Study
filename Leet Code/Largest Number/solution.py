@@ -124,3 +124,12 @@ class Solution:
     def largestNumber(self, nums: List[int]) -> str:
         answer = ''.join(sorted(map(str, nums), key = Compare))
         return '0' if answer[0] == '0' else answer
+
+# More sleek in my opinion
+class Compare(str):
+    def __lt__(x, y):
+        return x+y > y+x
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:
+        answer = ''.join(sorted(map(str, nums), key = Compare))
+        return str(int(answer))
