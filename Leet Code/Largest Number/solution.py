@@ -87,7 +87,7 @@ class Solution:
             i += 1
         return str(int(''.join(nums)))
 
-# Fastest Approach switch to for loop
+# Fastest Approach switched to for loop
 class Solution:
     @staticmethod
     def compare(n1, n2):
