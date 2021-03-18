@@ -55,6 +55,22 @@ class Solution:
                 if nums[j-1] + nums[j] < nums[j] + nums[j-1]:
                     nums[j-1], nums[j] = nums[j], nums[j-1]
         return ''.join(nums)
+# Third Approach switched to While loop (2-3 times faster)
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:
+        # edge case
+        if set(nums) == {0}:
+            return '0'
+        nums = sorted(map(str, nums), reverse = True)
+        i = 1
+        while i < len(nums):
+            j = i
+            while j > 0 and nums[j-1] + nums[j] < nums[j] + nums[j-1]:
+                nums[j-1], nums[j] = nums[j], nums[j-1]
+                j -= 1
+            i += 1
+        return ''.join(nums)
+
 
 # Book Approach
 class Solution:
