@@ -56,4 +56,17 @@ class Solution:
                     nums[j-1], nums[j] = nums[j], nums[j-1]
         return ''.join(nums)
 
-
+# Book Approach
+class Solution:
+    @staticmethod
+    def compare(n1, n2):
+        return str(n1) + str(n2) < str(n2) + str(n1)
+    def largestNumber(self, nums: List[int]) -> str:
+        i = 1
+        while i < len(nums):
+            j = i
+            while j > 0 and self.compare(nums[j-1], nums[j]):
+                nums[j - 1], nums[j] = nums[j], nums[j - 1]
+                j -= 1
+            i += 1
+        return str(int(''.join(map(str, nums))))
