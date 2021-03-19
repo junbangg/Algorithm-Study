@@ -23,8 +23,13 @@ class Solution:
         for i, d in enumerate(dist):
             ogPoints[d].append(points[i])
         dist.sort()
-        print(ogPoints)
-        print(dist)
-        return [point for point in ogPoints[d] for d in dist[:k]]
-
-
+        answers = [ogPoints[d] for d in dist[:k]]
+        flat = []
+        for a in answers:
+            if len(a) == 1:
+                flat.append(a[0])
+            else:
+                for p in a:
+                    if p not in flat:
+                        flat.append(p)
+        return flat
