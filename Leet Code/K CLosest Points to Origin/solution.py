@@ -18,15 +18,12 @@ class Solution:
 
 # Dictionary Approach
 '''
-Accepted, but performance could be better
-the Memory used is quite big as well
+Fastest
 '''
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-        def distance(x, y):
-            return sqrt(x**2 + y**2)
         ogPoints = collections.defaultdict(list)
-        dist = [distance(p[0], p[1]) for p in points]
+        dist = [sqrt(x**2 + y**2) for (x,y) in points]
         for i, d in enumerate(dist):
             ogPoints[d].append(points[i])
         dist.sort()
