@@ -1,4 +1,7 @@
 # insertion sort approach (too slow)
+'''
+Time Out
+''''
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         def computeDistance(point):
@@ -14,6 +17,10 @@ class Solution:
         return points[:k]
 
 # Dictionary Approach
+'''
+Accepted, but performance could be better
+the Memory used is quite big as well
+'''
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         def distance(x, y):
