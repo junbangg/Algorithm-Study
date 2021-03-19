@@ -40,6 +40,5 @@ def quickSort_lomuto(nums, low, high):
         quickSort_lomuto(nums, pivot + 1, high)
 
     return nums
-
 nums = [4,3,2,2,3,1]
-print(quickSort_hoare(nums, 0, len(nums)-1))
+print(quickSort(nums, 0, len(nums)-1))
