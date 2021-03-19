@@ -13,8 +13,6 @@ def lengthOfLongestSubstring(self, s: str) -> int:
 # 2nd Attempt
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        # edge cases
-        if s == "": return 0
         maxlen = 0
         stack = []
         for c in s:
