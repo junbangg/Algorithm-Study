@@ -24,7 +24,7 @@ the Memory used is quite big as well
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         def distance(x, y):
-            return sqrt(pow(x, 2) + pow(y, 2))
+            return sqrt(x**2 + y**2)
         ogPoints = collections.defaultdict(list)
         dist = [distance(p[0], p[1]) for p in points]
         for i, d in enumerate(dist):
