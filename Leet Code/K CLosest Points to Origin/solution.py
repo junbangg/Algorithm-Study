@@ -62,5 +62,4 @@ class Solution:
             x, y = p[0], p[1]
             distance = sqrt(x**2 + y**2)
             heapq.heappush(heap, (distance, [x, y]))
-        return [heap[i][1] for i in range(k)]
-
+        return [heapq.heappop(heap)[1] for _ in range(k)]
