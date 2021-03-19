@@ -40,3 +40,27 @@ class Solution:
                     if p not in flat:
                         flat.append(p)
         return flat
+
+# Min Heap solution
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        heap = []
+        for p in points:
+            x, y = p[0], p[1]
+            distance = sqrt(x**2 + y**2)
+            heapq.heappush(heap, (distance, [x, y]))
+        answer = []
+        for _ in range(k):
+            answer.append(heapq.heappop(heap)[1])
+        return answer
+
+# Min Heap approach trimmed down
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        heap = []
+        for p in points:
+            x, y = p[0], p[1]
+            distance = sqrt(x**2 + y**2)
+            heapq.heappush(heap, (distance, [x, y]))
+        return [heap[i][1] for i in range(k)]
+
