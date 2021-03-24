@@ -12,3 +12,9 @@ class Solution:
             else:
                 col -= 1
         return False
+
+
+# Pythonic Solution
+def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+    return any(target in row for row in matrix)
+
