@@ -18,4 +18,15 @@ class Solution:
                     right = mid - 1
                 else:
                     left = mid + 1
-        return answer 
+        return answer
+
+# Binary Search with library function
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        answer = set()
+        nums2.sort()
+        for i in nums1:
+            index = bisect.bisect_left(nums2, i)
+            if len(nums2) > 0 and index < len(nums2) and i == nums2[index]:
+                answer.add(nums2[index])
+        return answer
