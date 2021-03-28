@@ -43,18 +43,18 @@ class Solution:
 # Accepted Answer
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        window = collections.deque()
+        d = collections.deque()
         result = []
         for index, value in enumerate(nums):
             # check if window is inside sliding window range
             # (index - k) = sliding window starting index
-            if window and window[0] <= index - k:
-                window.popleft()
+            if d and d[0] <= index - k:
+                d.popleft()
             # Empty window until new value is at the front(if the new value is the max number)
-            while window and nums[window[-1]] <= value:
-                window.pop()
-            window.append(index)
+            while d and nums[d[-1]] <= value:
+                d.pop()
+            d.append(index)
             # k-1 => sliding window last index
             if index >= k - 1:
-                result.append(nums[window[0]])
+                result.append(nums[d[0]])
         return result
