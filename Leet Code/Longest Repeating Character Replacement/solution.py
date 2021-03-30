@@ -25,3 +25,19 @@ class Solution:
         return max(answer)
     # Doesn't work because of ABBB
     # above code doesn't consider changing A to B
+
+# Accepted Code
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        count = collections.Counter()
+        left = 0
+        maxlen = 0
+        for right in range(1, len(s) + 1):
+            count[s[right - 1]] += 1
+            max_char = count.most_common(1)[0][1]
+            if right - left - max_char > k:
+                count[s[left]] -= 1
+                left += 1
+            else:                
+                maxlen = max(maxlen, right - left)
+        return maxlen
