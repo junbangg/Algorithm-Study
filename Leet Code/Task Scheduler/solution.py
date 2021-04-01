@@ -21,9 +21,11 @@ class Solution:
 # Intuition
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
+        if not tasks:
+            return 0
         count = collections.Counter(tasks)
-        lst = sorted(count.values(), reverse = True)
-        maxOccur = lst[0]
-        num_maxOccur = lst.count(maxOccur)
-        answer = (maxOccur- 1) * (n + 1) + num_maxOccur 
+        L = sorted(count.values(), reverse = True)
+        maxOccur = L[0]
+        num_maxOccur = L.count(maxOccur)
+        answer = (maxOccur- 1) * (n + 1) + num_maxOccur
         return max(len(tasks), answer)
