@@ -15,4 +15,3 @@ class Solution:
         if sell != 0:
             profit += sell - buy
         return profit
-                
