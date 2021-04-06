@@ -26,3 +26,12 @@ class Solution:
         for i in range(2, n+1):
             self.dp[i] = self.dp[i-2] + self.dp[i-1]
         return self.dp[n]
+
+# Two vars
+class Solution:
+    dp = collections.defaultdict(int)
+    def fib(self, n: int) -> int:
+        x,y = 0, 1
+        for _ in range(n):
+            x, y = y, x + y
+        return x
