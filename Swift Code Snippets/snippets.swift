@@ -10,5 +10,5 @@ A.insert("somthing", at: 0)
 //Pop()
 A.removeLast()
 
-
-
+// Access Last element
+A.last
