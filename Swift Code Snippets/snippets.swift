@@ -17,3 +17,6 @@ A.last
 let items = ["a","b","c","c"]
 let mappedItems = items.map{ ($0, 1) }
 let counts = Dictionary(mappedItems, uniquingKeyswith: +)
+
+// Count unique values in Array
+return Set(array).count
