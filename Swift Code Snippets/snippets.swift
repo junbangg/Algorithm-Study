@@ -12,3 +12,8 @@ A.removeLast()
 
 // Access Last element
 A.last
+
+// Count element Frequencies in Array
+let items = ["a","b","c","c"]
+let mappedItems = items.map{ ($0, 1) }
+let counts = Dictionary(mappedItems, uniquingKeyswith: +)
