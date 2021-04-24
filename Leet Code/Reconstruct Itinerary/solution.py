@@ -23,6 +23,21 @@ class Solution:
         dfs("JFK")
         return route[::-1]
 
+# Using deque
+class Solution:
+    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
+        # set map
+        dic = collections.defaultdict(collections.deque)
+        for frm, to in sorted(tickets):
+            dic[frm].append(to)
+        result = []
+        def dfs(dest):
+            while dic[dest]:
+                dfs(dic[dest].popleft())
+            result.append(dest)
+        dfs('JFK')
+        return result[::-1]
+
 # Iterative approach
 class Solution:
     def findItinerary(self, tickets: List[List[str]]) - > List[str]:
