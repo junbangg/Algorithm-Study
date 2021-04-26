@@ -11,3 +11,8 @@ note that it is forward slash \  not /
 string = re.sub(r'[^\w]', ' ', originalString)
 
 
+'''
+Custom Sorting with lambda
+example) sorting ["let1 art can", "let2 own kit dig"] by [1:] elements first and then the first element
+'''
+sort(key = lambda x: (x.split()[1:], x.split()[0]))
