@@ -16,3 +16,11 @@ Custom Sorting with lambda
 example) sorting ["let1 art can", "let2 own kit dig"] by [1:] elements first and then the first element
 '''
 sort(key = lambda x: (x.split()[1:], x.split()[0]))
+
+'''
+Sorting each string inside list
+'''
+for i in range(len(string)):
+    temp = sorted(string[i])
+    string[i] = ''.join(temp)
+
