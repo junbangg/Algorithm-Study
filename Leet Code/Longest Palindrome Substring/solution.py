@@ -20,3 +20,37 @@ class Solution:
         for i in range(len(s) - 1):
             longest = max(longest, expand(i, i+1), expand(i, i+2), key = len)
         return longest
+
+
+# third attempt
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        if len(s) <= 2:
+            if s == s[::-1]:
+                return s
+            else:
+                return s[0]
+        elif s == s[::-1]:
+            return s
+        answer = ""
+        for i in range(1, len(s)):
+            odd, even = "", ""
+            a, b = -1, len(s)
+            # odd lengthed version pal
+            odd = s[i]
+            c, d = i-1, i+1
+            # even lengthed version pal
+            if s[i-1] == s[i]:
+                even = s[i-1:i+1]
+                a, b = i-2, i+1
+            while a >= 0 and b < len(s) and s[a] == s[b]:
+                even = s[a] + even + s[b]
+                a -= 1
+                b += 1
+            while c >= 0 and d < len(s) and s[c] == s[d]:
+                odd = s[c] + odd + s[d]
+                c -= 1
+                d += 1
+            pal = max(odd, even, key = lambda x: len(x))
+            answer = max(answer, pal, key = lambda x: len(x))
+        return answer
