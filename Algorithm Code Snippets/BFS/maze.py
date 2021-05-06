@@ -1,5 +1,6 @@
 from collections import deque
-maze = [[0,0,0],[0,0,0],[0,0,0]]
+#maze = [[0,0,0],[0,0,0],[0,0,0]]
+maze = [[0,0,0,0,0,0,0,1],[0,0,0,0,0,0,0,0],[0,0,0,0,0,1,0,0],[0,0,0,0,1,0,0,0],[0,0,0,1,0,0,0,1],[0,0,1,0,0,0,1,0],[0,1,0,0,0,1,0,0],[1,0,0,0,0,0,0,0]]
 
 class Point:
     def __init__(self, x, y):
@@ -27,6 +28,7 @@ def bfs(source, dest):
 
     visited = [[False for i in range(len(maze[0]))]
                for j in range(len(maze))]
+    print(visited)
 
     visited[source.x][source.y] = True
     q = deque()
@@ -57,5 +59,5 @@ def bfs(source, dest):
                 adjNode = QueueNode(Point(nextRow, nextCol), cur.cost + nextCost, nextDir)
                 q.append(adjNode)
 start = Point(0,0)
-end = Point(2,2)
+end = Point(len(maze) - 1, len(maze[0]) - 1)
 print(bfs(start, end))
