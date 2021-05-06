@@ -14,17 +14,17 @@ def solution(board):
             NSCost, WECost = 600, 100
         else:
             NSCost, WECost = 100, 100
-        #north
-        if lastDirection != 'S':
-            dfs(x-1, y, 'N', cost + NSCost)
-        #south
-        if lastDirection != 'N':
+        if lastDirection == '':
             dfs(x+1, y, 'S', cost + NSCost)
-        #west
-        if lastDirection != 'E':
+            dfs(x, y+1, 'E', cost + WECost)
+        else:
+            #north
+            dfs(x-1, y, 'N', cost + NSCost)
+            #south
+            dfs(x+1, y, 'S', cost + NSCost)
+            #west
             dfs(x, y+1, 'W', cost + WECost)
-        #east
-        if lastDirection != 'W':
+            #east
             dfs(x, y-1, 'E', cost + WECost)
     dfs(0, 0, '', 0)
     return min(answers)
