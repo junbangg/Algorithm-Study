@@ -5,6 +5,14 @@ class Solution:
         while cur:
             rev, rev.next, cur= cur, rev, cur.next
         return rev
+# easier to understand iterative solution
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        cur, rev = head, None
+        while cur:
+            temp, cur.next = cur.next, rev
+            rev, cur = cur, temp
+        return rev
 
 # Second Attempt
 class Solution:
