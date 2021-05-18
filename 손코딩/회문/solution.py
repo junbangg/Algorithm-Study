@@ -14,6 +14,3 @@ def checkPalindrome(s):
 a = 'baaxaab'
 b = 'baaxxaab'
 print(checkPalindrome(a))
-
-
-
