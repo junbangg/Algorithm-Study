@@ -4,10 +4,11 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# BFS solution O()
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
-        # Time Complexity = O()
-        # base case
+        # edge case
         if not root:
             return 0
         q = collections.deque([root])
@@ -21,6 +22,11 @@ class Solution:
                 if cur.right:
                     q.append(cur.right)
         return depth
-
-
+# recursive function. O(n)
+class Solution:
+    def maxDepth(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+        
 
