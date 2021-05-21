@@ -6,6 +6,13 @@
 #         self.right = right
 
 # BFS solution O()
+'''
+Time Complexity: while loop runs for 'height' amount of times
+height of tree = min: log (n+1) base 2
+                max : n
+
+'''
+# Time Complexity = O(n^2)
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
         # edge case
