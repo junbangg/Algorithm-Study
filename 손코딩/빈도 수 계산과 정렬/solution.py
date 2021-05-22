@@ -32,5 +32,11 @@ def sortByCount(nums):
             answer.append(heapq.heappop(h))
     return answer
 
+def sortByCountImproved(nums):
+    count = collections.Counter(nums)
+    return sorted(nums, key = lambda x: (count[x], x))
+
+
+
 a = [4,5,6,5,4,3]
-print(sortByCount(a))
+print(sortByCountImproved(a))
