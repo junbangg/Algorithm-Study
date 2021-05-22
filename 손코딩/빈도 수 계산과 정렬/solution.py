@@ -22,8 +22,11 @@ def sortByCount(nums):
     # count
     count = collections.Counter(nums)
     heapDic = collections.defaultdict(list)
-    for key, val in count.items():
-        heapq.heappush(heapDic[val], key)
+    # create heapDic
+    # O(nlogn)
+    for num in nums:
+        heapq.heappush(heapDic[count[num]], num)
+    # O(keyLength * key-heap) O(n2)
     for key, h in heapDic.items():
         while h:
             answer.append(heapq.heappop(h))
