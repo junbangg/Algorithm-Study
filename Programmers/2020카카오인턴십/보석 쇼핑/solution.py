@@ -39,6 +39,31 @@ def solution(gems):
                 dic[gems[right]] += 1
     return answer[1] 
 
+# Second attempt
+import collections
+def solution(gems):
+    counter = collections.defaultdict(int)
+    need = len(set(gems))
+    left, right = 0, 0
+    minLength = len(gems) + 1
+    answer = []
+    while right < len(gems):
+        if counter[gems[right]] == 0:
+            need -= 1
+        counter[gems[right]] += 1
+        if need == 0:
+            while left < right:
+                if counter[gems[left]] > 1:
+                    counter[gems[left]] -= 1
+                    left += 1
+                else:
+                    break
+            if minLength > right - left + 1:
+                minLength = right - left + 1
+                answer = [left+1, right+1]
+        right += 1
+    return answer
+
 
 gems = ["DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"]
 print(solution(gems))
