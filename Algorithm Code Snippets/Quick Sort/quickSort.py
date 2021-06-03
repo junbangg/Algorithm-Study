@@ -1,4 +1,4 @@
-# Hoare 
+#Hoare 
 def quickSort_hoare(nums, low, high):
     def partition(nums, pivot, high):
         left = pivot + 1
@@ -15,7 +15,7 @@ def quickSort_hoare(nums, low, high):
             right -= 1
         nums[pivot], nums[right] = nums[right], nums[pivot]
         return right
-
+        
     if low < high:
         pivot = partition(nums, low, high)
         quickSort_hoare(nums, low, pivot - 1)
