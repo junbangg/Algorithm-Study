@@ -1,3 +1,4 @@
+# dont need function in baekjoon
 def solution(arr):
     ascending, descending = True, True
     for i in range(1, len(arr)):
