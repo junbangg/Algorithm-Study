@@ -1,4 +1,4 @@
-
+# retry without combinations
 import itertools
 N, M = map(int,input().split())
 A = map(int, input().split())
