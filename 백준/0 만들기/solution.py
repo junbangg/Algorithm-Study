@@ -18,3 +18,4 @@ for _ in range(N):
     solve('', nums)
     for a in answers:
         print(a)
+    print()
