@@ -17,8 +17,6 @@ def solution(N, road, K):
                 answer.add(node)
             for nextWeight, nextNode in map[node]:
                 heapq.heappush(q, (nextWeight + weight, nextNode))
-    print(answer)
-    print(dp)
     return len(answer)
 
 

@@ -12,8 +12,9 @@ class Car:
         self.front = front
         self.rear = self.set_rear()
 
-    def move(self, direction, dist):
-        pass
+    def move(self, front, rear):
+        self.front = front
+        self.rear = rear
 
     def get_front(self):
         return self.front.x, self.front.y
@@ -50,8 +51,7 @@ class Map:
         pass
 
     def getCar(self, x, y):
-        car = self.map[x][y]
-        return car.
+        return self.map[x][y]
 
     def printMap(self):
         for i in range(self.rows):
@@ -79,7 +79,39 @@ def main():
                 if map.map[x][y] != 0:
                     # calculate where to move the car
                     car = map.getCar(x, y)
-
+                    dir, front_x, front_y , rear_x, rear_y = car.direction, car.get_front(), car.get_rear()
+                    moved = False
+                    if dir == 'N' or dir == 'S':
+                        col = front_y
+                        for i in range(5):
+                            # rear 에서는 -dif 하면 됨
+                            dif = front_x - i
+                            # valid condition
+                            if map.map[i][col] == 0 and map.map[rear_x - dif][col] == 0 and i != x and rear_x - dif != x:
+                                car.move(Coord(i, col), Coord(rear_x - dif, col))
+                                # previous position set to 0
+                                map.map[front_x][front_y] = 0
+                                map.map[rear_x][rear_y] = 0
+                                # new position set
+                                map.map[i][col] = car
+                                map.map[rear_x - i][col] = car
+                                moved = True
+                    if dir == 'W' or dir == 'E':
+                        row = front_x
+                        for i in range(5):
+                            # rear 에서는 -dif 하면 됨
+                            dif = front_y - i
+                            # valid condition
+                            if map.map[row][i] == 0 and map.map[row][rear_y - dif] == 0 and i != y and rear_y - dif != y:
+                                car.move(Coord(row, i), Coord(i, rear_y - dif))
+                                # previous position set to 0
+                                map.map[front_x][front_y] = 0
+                                map.map[rear_x][rear_y] = 0
+                                # new position set
+                                map.map[row][i] = car
+                                map.map[row][rear_y - dif] = car
+                                moved = True
+                
 
 
 
