@@ -3,23 +3,21 @@ from itertools import combinations
 # input
 N, M = map(int, input().split(' '))
 ogMap = [list(map(int, input().split(' '))) for _ in range(N)]
-# combinations 
 viruses, candidates = [], []
+# save 0 positions and 2(virus) positions
 for i in range(N):
     for j in range(M):
         if ogMap[i][j] == 0:
             candidates.append((i, j))
         if ogMap[i][j] == 2:
             viruses.append((i, j))
-
+# calculate all combinations
 candidates = list(combinations(candidates, 3))
 answer = -sys.maxsize
-walls = []
-map = []
 # N S W E
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
-
+# dfs
 def dfs(x, y, map):
     for i in range(4):
         nextX, nextY = x + dx[i], y + dy[i]
@@ -30,17 +28,10 @@ def dfs(x, y, map):
 
 for cand in candidates:
     mapCopy = copy.deepcopy(ogMap)
-    safeZone = 0
     for x, y in cand:
         mapCopy[x][y] = 1
     for x, y in viruses:
         dfs(x, y, mapCopy)
     safeZone = sum(i.count(0) for i in mapCopy)
-    '''
-    if safeZone > answer:
-        answer = safeZone
-        walls = cand
-        map = mapCopy
-    '''
     answer = max(answer, safeZone)
 print(answer)
