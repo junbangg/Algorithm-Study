@@ -1,16 +1,10 @@
 tc = int(input())
 for _ in range(tc):
-    M, N, tx, ty = map(int, input().split())
-    x = y = 1
-    count = 1
+    M, N, x, y = map(int, input().split())
     answer = -1
-    for i in range(40001):
-        if x == tx and y == ty:
-            answer = count
+    while x <= M*N:
+        if (x-y) % N == 0:
+            answer = x
             break
-        if x < M: x += 1
-        else: x = 1
-        if y < N: y += 1
-        else: y = 1
-        count += 1
+        x += M
     print(answer)
