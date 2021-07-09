@@ -1,30 +1,29 @@
 import heapq
-N, M = list(map(int, input().split()))
-pairs = [((list(map(int, input().split())))) for _ in range(M)]
+N, M = map(int, input().split())
+prereq = [0] * (N + 1)
+graph = {}
 
-dic = {}
-h = []
-#1 check list
-#2 add to heap
-#3 add to dic
-check = [False for _ in range(N+1)]
-for a, b in pairs:
-    check[a] = True
-    check[b] = True
-    dic[a] = b
-    heapq.heappush(h, a)
+# setup prereq and graph
+for i in range(N+1):
+    graph[i] = []
+for _ in range(M):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    prereq[b] += 1
 
-#add rest of numbers to heap
+# topological sort
+q, answer = [], []
+
 for i in range(1, N+1):
-    if not check[i]:
-        check[i] = True
-        heapq.heappush(h, i)
+    if prereq[i] == 0:
+        heapq.heappush(q, i)
 
-# add to answer
-answer = []
-while h:
-    num = heapq.heappop(h)
-    answer.append(num)
-    if num in dic:
-        answer.append(dic[num])
+while q:
+    cur = heapq.heappop(q)
+    answer.append(cur)
+    for nxt in graph[cur]:
+        prereq[nxt] -= 1
+        if prereq[nxt] == 0:
+            heapq.heappush(q, nxt)
+
 print(*answer)
