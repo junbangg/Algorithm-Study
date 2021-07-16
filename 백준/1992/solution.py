@@ -21,7 +21,6 @@ def recurse(x, y, size):
     cnt = count(x,y,size)
     if cnt == '1' or cnt == '0':
         return cnt
-       return '0'
     encode = '('
     encode += recurse(x, y, size//2)
     encode += recurse(x, y+size//2, size//2)

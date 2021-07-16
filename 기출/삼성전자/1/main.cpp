@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <stdio.h>
+#include <time.h>
 // #include <time.h>
 #define N              4
 #define MAX_QUERYCOUNT 1000000
@@ -158,9 +159,11 @@ void doUserImplementation(int guess[]) {
     int** pool = createPool(size, N);
 
     int indDecision = 0;
-    while (size>=11) {
+    while (size>=1) {
         //make a guess query(random)
-        int guessIndex = indDecision++ % size;
+        // int guessIndex = indDecision++ % size;
+        srand((unsigned) time(0));
+        int guessIndex = rand() / size;
         int usersGuess[N];
         // copy to guess[]
         for (int i = 0; i < N; i++) {
