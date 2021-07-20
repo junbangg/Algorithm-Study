@@ -1,4 +1,8 @@
 # commands
+# def check(num):
+#     return num >= 1000000000:
+#     pass
+
 cmds = []
 while 1:
     data = input()
@@ -58,10 +62,9 @@ while 1:
                         a = stack.pop()
                         b = stack.pop()
                         if abs(a) >= 1 and abs(b) >= 1:
-                            temp = a%b
-                            # if a < 0:
-                            #     stack.append(-temp)
-                            # else:
+                            temp = abs(a) % abs(b)
+                            if a < 0 or b < 0:
+                                temp = -temp
                             stack.append(temp) # check
                 elif cmd == 'DUP':
                     if stack:
@@ -70,7 +73,7 @@ while 1:
             if len(stack) > 1:
                 print('ERROR')
             else:
-                if stack and stack[0] <= 1000000000:
+                if stack and abs(stack[0]) < 1000000000:
                     print(stack[0])
                 else:
                     print('ERROR')
