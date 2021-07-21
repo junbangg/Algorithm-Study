@@ -1,9 +1,9 @@
 import sys
-class Fenwick(object):
+class Fenwick(list):
     def __init__(self, nums):
         # 펜윅트리 생성 
         # index 1부터.. 앞에 0을 넣어준 리스트로 만든다
-        self.sum_array = [0] * (len(nums) + 1)
+        self.prefix = [0] * (len(nums) + 1)
         self.nums = nums
         self.n = len(nums)
         for i in range(len(nums)):
@@ -12,7 +12,7 @@ class Fenwick(object):
 
     def add(self,x,val):
         while x <= self.n:
-            self.sum_array[x] += val
+            self.prefix[x] += val
             x += self.lowbit(x)
 
 
@@ -22,7 +22,7 @@ class Fenwick(object):
     def sum(self,x):
         res = 0
         while x >0:
-            res += self.sum_array[x]
+            res += self.prefix[x]
             x -= self.lowbit(x)
         return res
 
@@ -54,4 +54,3 @@ for a,b,c in cmds:
         nums.update(b, c)
     else:
         print(nums.sumRange(b, c))
-    
