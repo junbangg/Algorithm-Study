@@ -1,7 +1,7 @@
-# heapq solution
-import sys, heapq, collections
+# sort solution
+import sys, collections
 input = sys.stdin.readline
-h = []
+trees = []
 dic = collections.defaultdict(int)
 N = 0
 while True:
@@ -12,8 +12,9 @@ while True:
     N += 1
 
 for tree, cnt in dic.items():
-    heapq.heappush(h, (tree, cnt))
+    trees.append((tree, cnt))
 
-while h:
-    tree, cnt = heapq.heappop(h)
+trees.sort(reverse=True)
+while trees:
+    tree, cnt = trees.pop()
     print('%s %.4f' %(tree, cnt/N*100))
