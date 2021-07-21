@@ -46,9 +46,6 @@ nums = Fenwick(temp)
 cmds = []
 for _ in range(M+K):
     a,b,c = map(int, input().split())
-    cmds.append((a,b,c))
-
-for a,b,c in cmds:
     if a == 1:
         # b index 를 c 로
         nums.update(b, c)
