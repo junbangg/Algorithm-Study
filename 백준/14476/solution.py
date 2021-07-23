@@ -37,4 +37,4 @@ if k == 0:
 else:
     print(answer, k, sep = ' ')
 
-
+ 
