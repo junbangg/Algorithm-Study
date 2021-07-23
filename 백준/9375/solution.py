@@ -1,22 +1,21 @@
 import sys, collections
 input = sys.stdin.readline
 
-visited = []
-def dfs(ind, comb):
-    global answer
-    if comb in visited:
-        return 
-    if ind < len(categories):
-        for item in dic[categories[ind]]:
-            answer += 1
-            nxt = comb[:]
-            nxt.append(item)
-            visited.append(nxt)
-            dfs(ind+1, nxt)
 
+
+def dfs(comb, ind, C, dic, categories):
+    global answer, visited
+    if ind < C:
+        for cloth in dic[categories[ind]]:
+            comb.append(cloth)
+            print(comb)
+            if comb not in visited:
+                visited.append(comb)
+                answer += 1
+                dfs(comb, ind+1, C, dic, categories)
+                comb.pop()
 
 tc = int(input())
-
 for _ in range(tc):
     N = int(input())
     dic = collections.defaultdict(list)
@@ -25,9 +24,12 @@ for _ in range(tc):
         dic[category].append(item)
 
     categories = list(dic.keys())
-    visited.clear()
+    C = len(categories)
+    visited = []
+    #dfs
     answer = 0
-    dfs(0, [])
+    dfs([], 0, C, dic, categories)
+    print(visited)
     print(answer)
 
 
