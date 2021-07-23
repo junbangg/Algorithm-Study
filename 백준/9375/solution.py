@@ -1,8 +1,6 @@
 import sys, collections
 input = sys.stdin.readline
 
-
-
 def dfs(comb, ind, C, dic, categories):
     global answer, visited
     if ind < C:
