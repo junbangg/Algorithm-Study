@@ -10,5 +10,3 @@ for c in coins:
         money = r
         answer += q
 print(answer)
-
-
