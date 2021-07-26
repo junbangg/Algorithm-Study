@@ -34,9 +34,7 @@ for _ in range(M):
             union(parent, a, b)
     else:
         # find
-        if a == b:
-            print('YES')
-        elif find(parent, a) == find(parent, b):
+        if a != b or find(parent, a) == find(parent, b):
             print('YES')
         else:
             print('NO')
