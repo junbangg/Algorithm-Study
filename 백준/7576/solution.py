@@ -2,7 +2,6 @@ import sys, collections
 input = sys.stdin.readline
 M, N = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(N)]
-visited = [[0 for _ in range(M)] for _ in range(N)]
 
 dx = [0, 0, -1, 1]
 dy = [1, -1, 0, 0]
@@ -13,7 +12,7 @@ def bfs(q, count):
         cur_x, cur_y = q.popleft()
         for i in range(4):
             nx, ny = cur_x + dx[i], cur_y + dy[i]
-            if 0<=nx<N and 0<=ny<M and visited[nx][ny] == 0 and grid[nx][ny] == 0:
+            if 0<=nx<N and 0<=ny<M and grid[nx][ny] == 0:
                 grid[nx][ny] = grid[cur_x][cur_y] + 1
                 answer = max(answer, grid[nx][ny])
                 count -= 1
