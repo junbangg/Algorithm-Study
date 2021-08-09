@@ -22,4 +22,4 @@ for n in nums:
     else:
         dp[binarySearch(dp, n)] = n
 print(len(dp)-1)
-print(dp[1:])
+print(*dp[1:])
