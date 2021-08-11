@@ -8,11 +8,11 @@ def dijkstra(graph, N, M):
         for cur_node in range(1, N+1):
             if dp[cur_node][cur_cost] == INF:
                 continue
-            distance = dp[cur_node][cur_cost]
+            cur_distance = dp[cur_node][cur_cost]
             for nxt, nxt_cost, nxt_dist in graph[cur_node]:
                 if cur_cost + nxt_cost > M:
                     continue
-                dp[nxt][cur_cost+nxt_cost] = min(dp[nxt][cur_cost + nxt_cost], distance + nxt_dist)
+                dp[nxt][cur_cost+nxt_cost] = min(dp[nxt][cur_cost + nxt_cost], cur_distance + nxt_dist)
     return dp
 
 #입력
@@ -25,7 +25,6 @@ for _ in range(tc):
         graph[u].append((v, c, d))
 
     result = dijkstra(graph, N, M)
-    print(result)
     if min(result[N]) == INF:
         print("Poor KCM")
     else:
