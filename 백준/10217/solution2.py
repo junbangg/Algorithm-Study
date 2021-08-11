@@ -12,6 +12,7 @@ def dijkstra(graph, N, M):
             for nxt, nxt_cost, nxt_dist in graph[cur_node]:
                 if cur_cost + nxt_cost > M:
                     continue
+                #다음 정점의 다음 비용 가능성에 대한 거리 최소값을 갱신한다
                 dp[nxt][cur_cost+nxt_cost] = min(dp[nxt][cur_cost + nxt_cost], cur_distance + nxt_dist)
     return dp
 
