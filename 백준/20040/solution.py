@@ -1,42 +1,25 @@
-import sys, collections
-# def isCycle(cur_node, visited, parent):
-#     visited[cur_node] = 1
-#     for nxt_node in graph[cur_node]:
-#         if not visited[nxt_node]:
-#             if isCycle(nxt_node, visited, cur_node):
-#                 return True
-#         elif parent != nxt_node:
-#             return True
-#     return False
+import sys
 
-def isCycle(start, visited):
-    q = collections.deque()
-    q.append((start, -1))
-    visited[start] = 1
-    while q:
-        cur_node, parent = q.popleft()
-        for nxt_node in graph[cur_node]:
-            if not visited[nxt_node]:
-                visited[nxt_node] = 1
-                q.append((nxt_node, cur_node))
-            elif parent != nxt_node:
-                return True
-    return False
+def find(x, parent):
+    if parent[x] != x:
+        return find(parent[x], parent)
+    return x
+def union(a, b, parent):
+    a = find(a, parent)
+    b = find(b, parent)
+    if a < b:
+        parent[b] = a
+    else:
+        parent[a] = b
 
 input = sys.stdin.readline
 N, M = map(int, input().split())
-graph = collections.defaultdict(list)
+parent = [i for i in range(N)]
 for i in range(1, M+1):
     a, b = map(int, input().split())
-    graph[a].append(b)
-    graph[b].append(a)
-    visited = [0] * N
-    if not visited[a]:
-        if isCycle(a, visited):
-            print(i)
-            exit(0)
-    if not visited[b]:
-        if isCycle(b, visited):
-            print(i)
-            exit(0)
+    if find(a, parent) == find(b, parent):
+        print(i)
+        exit(0)
+    else:
+        union(a, b, parent)
 print(0)
