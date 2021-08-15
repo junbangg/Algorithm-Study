@@ -18,6 +18,3 @@ while i < len(word):
     else:
         i += 1
 print(''.join(word))
-
-
-
