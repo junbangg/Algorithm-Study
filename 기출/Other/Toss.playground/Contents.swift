@@ -1,32 +1,4 @@
-import Foundation
 
-//import Foundation
-//
-//func solution(_ stepCounts:[Int]) -> Int {
-//    var total: Int = 0
-//    var bonus: Int = 0
-//    var counter: Int = 0
-//    for step in stepCounts {
-//        var temp = step
-//        if step > 10000 {
-//            temp = 10000
-//        }
-//        total += temp
-//        bonus += temp
-//        if bonus >= 10000 {
-//            counter += 1
-//            print("got 10000")
-//            if counter == 1 || counter == 3 || counter == 5 {
-//                total += 10000
-//                //bonus = 0
-//            }
-//            bonus %= 10000
-//        }
-//        print("total: \(total)")
-//        print("bonus: \(bonus)")
-//    }
-//    return total
-//}
 
 
 //import Foundation
