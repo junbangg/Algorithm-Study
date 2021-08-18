@@ -4,38 +4,26 @@ N, M, R = map(int, input().rstrip().split())
 grid = [list(map(int, input().rstrip().split())) for _ in range(N)]
 
 depth = min(N, M) // 2
-
-# down, right 은 역순으로 배출(LIFO)
-# left, up 는 들어온 순서대로 배출(FIFO)
+# down, right 은 역순으로 이동
+# left, up 는 순서대로 이동
 for i in range(depth):
     for _ in range(R):
-        left, up = collections.deque(), collections.deque()
-        down, right = [], []
-        for x in range(N):
-            for y in range(M):
-                # left
-                if x == i and i < y < M-i:
-                    left.append((grid[x][y], x, y))
-                # down
-                if i <= x < N-1-i and y == i:
-                    down.append((grid[x][y], x, y))
-                # right
-                if x == N-1-i and i <= y < M-1-i:
-                    right.append((grid[x][y], x, y))
-                # up
-                if i < x < N-i and y == M-1-i:
-                    up.append((grid[x][y], x, y))
-        #move
-        while left:
-            num, x, y = left.popleft()
-            grid[x][y-1] = num
-        while down:
-            num, x, y = down.pop()
-            grid[x+1][y] = num
-        while right:
-            num, x, y = right.pop()
-            grid[x][y+1] = num
-        while up:
-            num, x, y = up.popleft()
-            grid[x-1][y] = num
-print(grid)
+        # left -> up -> right -> down 순서대로 이동하면 [i][i] 만 캐싱 하면 된다
+        cache = grid[i][i]
+        #left
+        for col in range(i+1, M-i):
+            grid[i][col-1] = grid[i][col]
+        # up
+        for row in range(i+1, N-i):
+            grid[row-1][M-1-i] = grid[row][M-1-i]
+        # right
+        for col in range(M-2-i, i-1, -1):
+            grid[N-1-i][col+1] = grid[N-1-i][col]
+        # down
+        for row in range(N-2-i, i-1, -1):
+            grid[row+1][i] = grid[row][i]
+        
+        grid[i+1][i] = cache
+
+for i in range(N):
+    print(*grid[i])
