@@ -2,10 +2,10 @@ import sys, collections, heapq
 input = sys.stdin.readline
 INF = sys.maxsize
 
-def dijkstra(src):
+def dijkstra(src_time, src_node):
     q = []
-    visited[src[1]] = 0
-    heapq.heappush(q, src)
+    visited[src_node] = 0
+    heapq.heappush(q, (src_time, src_node))
     while q:
         time, node = heapq.heappop(q)
         if visited[node] < time:
