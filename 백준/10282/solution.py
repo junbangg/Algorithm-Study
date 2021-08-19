@@ -23,10 +23,10 @@ for _ in range(tc):
         a, b, s = map(int, input().split())
         graph[b].append((a, s))
     visited = [INF] * (N+1)
-    dijkstra((0, S))
-    count, minDist = 0, 0
+    dijkstra(0, S)
+    count, maxDist = 0, 0
     for i in visited:
         if i != INF:
             count += 1
-            minDist = max(minDist, i)
-    print(count, minDist)
+            maxDist = max(maxDist, i)
+    print(count, maxDist)
