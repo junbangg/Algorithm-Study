@@ -13,7 +13,7 @@ def bfs(src_x, src_y):
     while q:
         # 벽이 이동한 후에, 다시 체크해줘야한다.
         visited = [[False] * 8 for _ in range(8)]
-        while q:
+        for _ in range(len(q)):
             cur_x, cur_y = q.popleft()
             if cur_x == 0 and cur_y == 7:
                 return 1
