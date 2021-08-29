@@ -1,3 +1,8 @@
+def printBoard(board):
+    for i in range(len(board)):
+        print(*board[i])
+    print('\n')
+
 def pop(board, m, n):
     pop_set = set()
     # search squares
@@ -16,6 +21,7 @@ def pop(board, m, n):
 def solution(m, n, board):
     answer = 0
     board = list(map(list,zip(*board)))
+    printBoard(board)
     while True:
         res = pop(board, m, n)
         if res == 0: return answer
