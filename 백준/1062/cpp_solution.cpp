@@ -64,6 +64,10 @@ int main() {
             word[i].pop_back();
         }
     }
+    // for (int i=0;i<MAX;i++) {
+    //     cout << word[i];
+    //     cout << "\n";
+    // }
     visited['a' - 'a'] = true;
     visited['c' - 'a'] = true;
     visited['i' - 'a'] = true;
