@@ -17,7 +17,7 @@ for x in range(N):
 
 answer = sys.maxsize
 # 가능한 모든 M 개의 치킨집 조합 
-for candidates in list(itertools.permutations(twos, M)):
+for candidates in list(itertools.combinations(twos, M)):
     total = 0
     # 모든 집의 좌표
     for house_x, house_y in ones:
