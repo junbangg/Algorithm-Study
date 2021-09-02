@@ -21,6 +21,7 @@ def dikjstra(src):
                 heapq.heappush(q, (nxt_dist, nxt_v))
     return dp
 
+#입력
 N, M, R = map(int, input().split())
 items = [0] + [i for i in map(int, input().split())]
 _map = [[] for _ in range(N+1)]
@@ -31,12 +32,12 @@ for _ in range(R):
 
 
 answer = 0
-for i in range(1, N+1):
-    visited = dikjstra(i)
+for i in range(1, N+1): # 모든 정점에 대해 dijkstra 수행
+    visited = dikjstra(i) # i -> 모든 정점까지의 최소거리 계산
     total = 0
-    for j in range(1, N+1):
+    for j in range(1, N+1): # 최소 거리가 수색범위(M) 이하이면 아이템 수 더하기
         if visited[j] <= M:
             total += items[j]
-    answer = max(answer, total)
+    answer = max(answer, total) # 아이템 합 최대 갱신
 print(answer)
 
