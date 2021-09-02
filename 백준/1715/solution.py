@@ -5,10 +5,11 @@ h = []
 N = int(input())
 for _ in range(N):
     heapq.heappush(h, int(input()))
-answer = 0
-while len(h) != 1:
+
+total = 0
+while len(h) >= 2:
     a = heapq.heappop(h)
     b = heapq.heappop(h)
-    answer += a+b
+    total += a + b
     heapq.heappush(h, a+b)
-print(answer)
+print(total)
