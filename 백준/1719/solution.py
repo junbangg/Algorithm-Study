@@ -2,11 +2,11 @@ import sys, heapq
 input = sys.stdin.readline
 dx = [1, -1, 0, 0]
 dy = [0, 0, 1, -1]
-def dijkstra(start):
+def dijkstra(src):
     q = []
-    heapq.heappush((q, (0, start)))
+    heapq.heappush((q, (0, src)))
     dp = [float('inf') for _ in range(N + 1)]
-    dp[start] = 0
+    dp[src] = 0
     while q:
         weight, cur = heapq.heappop(q)
         for nxt, nxt_weight in _map[cur]:
@@ -14,12 +14,12 @@ def dijkstra(start):
             if dp[nxt] > new_weight:
                 dp[nxt] = new_weight
                 heapq.heappush(q, (new_weight, nxt))
-                visited[nxt - 1][start - 1] = cur
+                visited[nxt - 1][src - 1] = cur
 
 N, M = map(int, input().split())
-_map = [[] for i in range(N + 1)]
-visited = [[0] * N for i in range(N)]
-for i in range(M):
+_map = [[] for _ in range(N + 1)]
+visited = [[0] * N for _ in range(N)]
+for _ in range(M):
     a, b, c = map(int, input().split())
     _map[a].append([b, c])
     _map[b].append([a, c])
@@ -31,4 +31,4 @@ for i in range(N):
             print("-", end=" ")
         else:
             print(visited[i][j], end=" ")
-    print('\n')
+    print()
