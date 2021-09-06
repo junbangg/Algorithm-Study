@@ -17,8 +17,3 @@ for _ in range(tc):
         print('YES')
     else:
         print('NO')
-
-
-
-            
-
