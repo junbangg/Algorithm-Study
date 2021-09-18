@@ -37,8 +37,9 @@ def solution(matrix):
     return answer
 
 tc = [["2 4", "-5 -3"], ["-10 9", "3 6"]]
+tc1 = [["5 5", "5 5"], ["5 5", "5 5"]]
 tc2 = [["5 4", "5 5"], ["5 5", "5 5"]]
-print(solution(tc2))
+print(solution(tc1))
             
 
 
