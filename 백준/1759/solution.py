@@ -15,16 +15,16 @@ def isValid(s):
             nonVowel += 1
     return vowel >= 1 and nonVowel >= 2
 
-def recurse(ind, s):
+def find(ind, s):
     if len(s) == L:
         if isValid(s):
             answers.append(s)
         return
     for i in range(ind+1, C):
-        recurse(i, s + letters[i])
+        find(i, s + letters[i])
 
 for i in range(C):
-    recurse(i, letters[i])
+    find(i, letters[i])
 
 for a in answers:
     print(a)
