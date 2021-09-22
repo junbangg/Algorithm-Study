@@ -5,13 +5,14 @@ N, H = map(int, input().split())
 up = [0] * (H + 1)
 down = [0] * (H + 1)
 
+# 짝수 홀수 구분해서 각 높이에 hit 수 추가
 for i in range(N):
     if i % 2 == 0:
         up[int(input().rstrip())] += 1
     else:
         down[int(input().rstrip())] += 1
 
-# prefix
+# 각 높이에 대한 hit 수 prefix sum 만들기
 for i in range(H-1, 0, -1):
     up[i] += up[i+1]
     down[i] += down[i+1]
