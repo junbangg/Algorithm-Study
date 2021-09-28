@@ -10,8 +10,8 @@ def dijkstra(src, dest):
     heapq.heappush(q, (0, src))
     while q:
         curWeight, cur = heapq.heappop(q)
-        if visited[cur] < curWeight:
-            continue
+        # if visited[cur] < curWeight:
+            # continue
         while graph[cur]:
             nxt, nxtWeight = graph[cur].pop()
             possibleWeight = min(visited[cur], nxtWeight)
