@@ -2,21 +2,6 @@ import sys, math
 input = sys.stdin.readline
 N = int(input())
 
-# def checkPrime(n):
-#     if n == 2:
-#         return True
-#     if n % 2 == 0 or n <= 1:
-#         return False
-
-#     sqr = int(math.sqrt(n)) + 1
-
-#     for divisor in range(3, sqr, 2):
-#         if n % divisor == 0:
-#             return False
-#     return True
-
-# primes = [i for i in range(N+1) if checkPrime(i)]
-
 def sieve(n):
     prime = [True for i in range(n + 1)]
     p = 2
@@ -52,19 +37,15 @@ def sieve(n):
 
 primes = sieve(N)
 answer = 0
-# answers = []
 for i in range(len(primes)):
     _sum = primes[i]
-    # temp = [primes[i]]
     ptr = i + 1
-    while ptr < len(primes) and _sum != N:
+    while ptr < len(primes) and _sum < N:
         _sum += primes[ptr]
-        # temp.append(primes[ptr])
         ptr += 1
+        print(_sum)
 
     if _sum == N:
         answer += 1
-        # answers.append(temp)
 print(answer)
-# print(answers)
 
