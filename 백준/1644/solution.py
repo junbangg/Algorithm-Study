@@ -43,9 +43,6 @@ for i in range(len(primes)):
     while ptr < len(primes) and _sum < N:
         _sum += primes[ptr]
         ptr += 1
-        print(_sum)
-
     if _sum == N:
         answer += 1
 print(answer)
-
