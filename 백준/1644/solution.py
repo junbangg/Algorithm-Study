@@ -37,12 +37,12 @@ def sieve(n):
 
 primes = sieve(N)
 answer = 0
-for i in range(len(primes)):
-    _sum = primes[i]
-    ptr = i + 1
-    while ptr < len(primes) and _sum < N:
-        _sum += primes[ptr]
-        ptr += 1
+for left in range(len(primes)):
+    _sum = primes[left]
+    right = left + 1
+    while right < len(primes) and _sum < N:
+        _sum += primes[right]
+        right += 1
     if _sum == N:
         answer += 1
 print(answer)
