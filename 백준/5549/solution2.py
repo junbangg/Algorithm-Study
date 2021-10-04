@@ -3,21 +3,21 @@ input = sys.stdin.readline
 
 N, M = map(int, input().split())
 K = int(input())
-
-_map = [list(input()) for _ in range(N)]
+_map = [list(input().rstrip()) for _ in range(N)]
 # 누적합
+# J, O, I
 prefix = [[[0,0,0] for i in range(M+1)] for j in range(N+1)] 
-
 for i in range(N):
     for j in range(M):
         for l in range(3):
-            prefix[i+1][j+1][l] = prefix[i+1][j][l] +prefix[i][j+1][l]- prefix[i][j][l]
+            prefix[i+1][j+1][l] = prefix[i+1][j][l] + prefix[i][j+1][l] - prefix[i][j][l]
         if _map[i][j]=='J':
             prefix[i+1][j+1][0] += 1
         elif _map[i][j]=='O':
             prefix[i+1][j+1][1] +=1
         elif _map[i][j]=='I':
             prefix[i+1][j+1][2] += 1
+
 for _ in range(K):
     a, b, c, d = map(int, input().split())
     answer = [0,0,0]
