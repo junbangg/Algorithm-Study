@@ -47,9 +47,6 @@ def bfs(src_x, src_y, src_dir, dest_x, dest_y, dest_dir): # 전부 1 뺴기
                     leap = 0
             #nxt_cost = cur_cost + minimumDirectionCommand(cur_dir, i) + 1
             if 0 <= nx < N and 0 <= ny < M and not visited[nx][ny] and _map[nx][ny] == '0':
-                #if nx == dest_x and ny == dest_y:
-                    #print("도착스: cur_dir, nxt_cost", cur_dir, nxt_cost)
-                    #return nxt_cost
                 visited[nx][ny] = True
                 print("nx, ny, nxt_cost", nx, ny, nxt_cost)
                 q.append((nx, ny, i, nxt_cost, leap))

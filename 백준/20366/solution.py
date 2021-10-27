@@ -14,6 +14,3 @@ for i in range(N):
             else:
                 left += 1
 print(answer)
-
-
-        
