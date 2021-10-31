@@ -18,14 +18,9 @@ def markIslands(x, y, marker):
                 edges[marker].add((x, y))
             else:
                 visited[nx][ny] = True
-                board[nx][ny] = str(marker) # "48" "0"
+                board[nx][ny] = marker
                 markIslands(nx, ny, marker)
 
-def printBoard(board):
-    for i in range(len(board)):
-        print(*board[i])
-
-    
 # island 표시
 visited = [[False] * N for _ in range(N)]
 marker = 1
@@ -57,26 +52,10 @@ def bfs(src_x, src_y, islandNum):
                     nxt_bridge += 1
                     q.append([nx, ny, nxt_bridge])
     # return minBridge
-# print()
-# printBoard(board)
-print(board)
-print(edges)
+
 test = collections.defaultdict(list)
 answer = float('inf')
 for islandNum in edges:
     for x, y in edges[islandNum]:
         answer = min(answer, bfs(x, y, islandNum))
 print(answer)
-print(test[3])
-
-# print()
-# for i in range(N):
-#     print(*board[i])
-# print(edges)
-
-# 5
-# 1 1 0 0 1
-# 1 1 0 0 1
-# 1 0 0 0 1
-# 0 0 1 0 1
-# 0 0 0 0 0 
