@@ -38,14 +38,13 @@ def bfs(src_x, src_y, islandNum):
     q.append([src_x, src_y, 0])
     # minBridge = float('inf')
     while q:
-        cur_x, cur_y, bridge = q.popleft()
+        cur_x, cur_y, bridge = q.popleft(0)
         for i in range(4):
             nx, ny = cur_x + dx[i], cur_y + dy[i]
             nxt_bridge = bridge
             if 0 <= nx < N and 0 <= ny < N and not visited[nx][ny]:
                 visited[nx][ny] = True
                 if board[nx][ny] != '0' and board[nx][ny] != islandNum:
-                    # test[nxt_bridge].append([src_x, src_y, nx, ny])
                     # minBridge = min(minBridge, nxt_bridge)
                     return nxt_bridge
                 else:
