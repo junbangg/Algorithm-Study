@@ -19,7 +19,7 @@ for i in range(26):
         else:
             dp[i][j] = dp[i][j-1]
 
-# for i in range(len(dp)):
-#     print(*dp[i])
+for i in range(len(dp)):
+    print(*dp[i])
 print(N - answer)
 
