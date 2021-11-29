@@ -1,16 +1,22 @@
 import sys
 input = sys.stdin.readline
 N, K = map(int, input().split())
-# dp = [[0] * N for _ in range(26)]
-dp = [0] * 26
+words = [input().rstrip() for _ in range(N)]
+dp = [[0] * N for _ in range(26)]
 
-answer = 0
-for _ in range(N):
-    word = list(input().rstrip())
-    for letter in set(word):
-        dp[ord(letter) - 97] += 1
-        answer = max(answer, dp[ord(letter) - 97])
-# print(dp
+for letter in words[0]:
+    letterIndex = ord(letter) - 97
+    dp[letterIndex][0] += 1
+
+answer = -float('inf')
+for i in range(26):
+    for j in range(1, len(words)):
+        for letter in words[j]:
+            letterIndex = ord(letter) - 97
+            if i == letterIndex:
+                dp[i][j] = dp[i][j-1] + 1
+                answer = max(answer, dp[i][j])
+            else:
+                dp[i][j] = dp[i][j-1]
 print(N - answer)
 
-# answer = N - 가장 자주 나타나는 letter count 
