@@ -14,5 +14,5 @@ for x in range(1, N+1):
         else:
             dp[x][y] = max(dp[x-1][y], dp[x][y-1])
 
-print(dp[x][y])
+print(dp[-1][-1])
             
