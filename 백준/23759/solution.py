@@ -22,3 +22,10 @@ for i in range(1, 27):
 print(N - dp[-1][-1])
 
 
+
+# 5 1
+# a
+# b
+# b
+# b
+# a
