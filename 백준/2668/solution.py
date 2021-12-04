@@ -2,23 +2,24 @@ import sys
 input = sys.stdin.readline
 
 N = int(input())
-firstRow = [i for i in range(1, N+1)]
-secondRow = [int(input()) for _ in range(N)]
+values = [0]
+for _ in range(N):
+    values.append(int(input()))
 answer = set()
 
-def dfs(index, comb1, comb2):
-    comb1.add(firstRow[index])
-    comb2.add(secondRow[index])
-    if secondRow[index] in comb1:
-        if comb1 == comb2:
-            answer.update(comb1)
+def dfs(index, first, second):
+    first.add(index)
+    second.add(values[index])
+    if arr[index] in first:
+        if first == second:
+            answer.update(first)
         return
-    return dfs(secondRow[index], comb1, comb2)
+    return dfs(values[index], first, second)
 
-for i in range(N):
-    if firstRow[i] not in answer:
+for i in range(1, N+1):
+    if i not in answer:
         dfs(i, set(), set())
 
 print(len(answer))
-for num in sorted(list(answer), reverse = True):
+for num in sorted(list(answer)):
     print(num)
