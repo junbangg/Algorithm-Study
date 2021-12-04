@@ -4,8 +4,8 @@ input = sys.stdin.readline
 N = int(input())
 firstRow = [i for i in range(1, N+1)]
 secondRow = [int(input()) for _ in range(N)]
-
 answer = set()
+
 def dfs(index, comb1, comb2):
     comb1.add(firstRow[index])
     comb2.add(secondRow[index])
