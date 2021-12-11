@@ -23,6 +23,7 @@ let counts = Dictionary(mappedItems, uniquingKeyswith: +)
 return Set(array).count
 
 /// Substrings!!!!
+//Reference: https://stackoverflow.com/a/46634511
 // Swift4/5
 public extension String {
   subscript(value: Int) -> Character {
