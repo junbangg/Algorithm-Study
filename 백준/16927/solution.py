@@ -2,31 +2,26 @@ import sys
 input = sys.stdin.readline
 
 N, M, R = map(int, input().split())
-arr = [input().split() for _ in range(N)]
+arr = [list(map(int, input().split())) for _ in range(N)]
 
-# for i in range(N, 0, -1):
-    # print(i)
-# 4 3 2 1
-
-def rotate(arr):
-    depth = min(N, M) // 2
+depth = min(N, M) // 2
+for _ in range(R):
     for d in range(depth):
         cache = arr[d][d]
         # top(left -> right)
-        for j in range(d+1, M-d):
-            arr[d][j-1] = arr[d][j]
+        for col in range(1+d, M-d):
+            arr[d][col-1] = arr[d][col]
         # right (bottom -> top)
-        for i in range(1+d, N-d):
-            arr[i-1][M-1-d] = arr[i][M-1-d]
+        for row in range(1+d, N-d):
+            arr[row-1][M-1-d] = arr[row][M-1-d]
         # bottom (right -> left)
-        for j in range(M-2-d, d-1, -1):
-            arr[N-1-d][j+d] = arr[N-1-d][j-1+d]
+        for col in range(M-1-d, d, -1):
+            arr[N-1-d][col] = arr[N-1-d][col-1]
         # left (bottom -> top)
-        for i in range(N-2-d, d-1, -1):
-            arr[i+d][d] = arr[i][d]
+        for row in range(N-1-d, 1+d, -1):
+            arr[row][d] = arr[row-1][d]
         arr[d+1][d] = cache
-    print(arr)
-    return arr
 
-print(rotate(arr))
+for i in range(len(arr)):
+    print(*arr[i])
         

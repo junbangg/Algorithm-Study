@@ -14,6 +14,7 @@ A.removeLast()
 A.last
 
 // Count element Frequencies in Array
+// Python Counter
 let items = ["a","b","c","c"]
 let mappedItems = items.map{ ($0, 1) }
 let counts = Dictionary(mappedItems, uniquingKeyswith: +)

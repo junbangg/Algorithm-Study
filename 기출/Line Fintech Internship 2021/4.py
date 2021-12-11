@@ -1,5 +1,6 @@
-set1 = set([0])
-set2 = set([0, 1])
+from itertools import combinations
 
-set3 = set1 - set2
-print(set3)
+# _set = set([i for i in range(15)])
+test = list(combinations([i for i in range(15)], 9))
+print(len(test))
+# print(test)
