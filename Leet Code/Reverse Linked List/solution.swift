@@ -8,6 +8,8 @@
  *     public init(_ val: Int, _ next: ListNode?) { self.val = val; self.next = next; }
  * }
  */
+
+ /// Iterative
  class Solution {
     func reverseList(_ head: ListNode?) -> ListNode? {
         var current = head
@@ -19,6 +21,24 @@
             current = temp
         }
         return reversedHead
+    }
+}
+
+/// Recursive 
+class Solution {
+    func recurse(_ head: ListNode?, _ previous: ListNode? = nil) -> ListNode? {
+        var head = head
+        if head == nil {
+            return previous
+        }
+        let next = head?.next
+        head!.next = previous
+
+        return recurse(next, head)
+    }
+
+    func reverseList(_ head: ListNode?) -> ListNode? {
+        return recurse(head)
     }
 }
 
