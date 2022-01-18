@@ -7,37 +7,32 @@ extension Int {
 }
 
 func solution(_ dartResult:String) -> Int {
-    var answer: [Int] = []
-    var numberString = ""
-    var number = 0
-    var isSkill = false
+    var numbers = [0]
     
-    for (index, value) in dartResult.enumerated() {
-        if value.isNumber {
-            if index != 0 && isSkill {
-                answer.append(number)
-                isSkill = false
+    for dart in dartResult {
+        let numberCount = numbers.count
+        if dart == "S" {
+            numbers[numberCount - 1] = numbers[numberCount - 1].power(of: 1)
+            numbers.append(0)
+        } else if dart == "D" {
+            numbers[numberCount - 1] = numbers[numberCount - 1].power(of: 2)
+            numbers.append(0)
+        } else if dart == "T" {
+            numbers[numberCount - 1] = numbers[numberCount - 1].power(of: 3)
+            numbers.append(0)
+        } else if dart == "*" {
+            numbers[numberCount - 2] *= 2
+            if numbers.count > 2 {
+                numbers[numberCount - 3] *= 2
             }
-            numberString += String(value)
+        } else if dart == "#" {
+            numbers[numberCount - 2] *= -1
         } else {
-            if !isSkill {
-                number = Int(numberString)!
-                numberString = ""
-            }
-            isSkill = true
-            if value == "D" { number = number.power(of: 2) }
-            if value == "T" { number = number.power(of: 3) }
-            if value == "*" {
-                if !answer.isEmpty {
-                    answer[answer.count - 1] *= 2
-                }
-                number *= 2
-            }
-            if value == "#" { number -= 2 * number }
+            numbers[numberCount - 1] *= 10
+            numbers[numberCount - 1] += Int(String(dart))!
         }
     }
-    answer.append(number)
     
-    return answer.reduce(0, +)
+    return numbers.reduce(0, +)
 }
 
