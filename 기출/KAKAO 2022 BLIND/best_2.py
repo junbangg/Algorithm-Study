@@ -69,3 +69,4 @@ def solution(n, k):
             continue
 
     return answer
+
