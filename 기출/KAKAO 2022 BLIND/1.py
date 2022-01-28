@@ -27,7 +27,7 @@
 # for b in banned:
 #     for key in reporter:
 #         if b in reporter[key]:
-#             answer[key] += 1
+#             answer[key] += 1
 from collections import defaultdict
 def solution(id_list, report, k):
     reporter_data = defaultdict(set)
