@@ -14,6 +14,7 @@ def solution(board, r, c):
         queue = deque()
         visited = [[0 for _ in range(4)] for _ in range(4)]
         queue.append([start[0], start[1], 1]) # x, y, moves
+        visited[start[0]][start[1]] = 1
         
         shortestMoves = sys.maxsize
 
