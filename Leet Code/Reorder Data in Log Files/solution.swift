@@ -1,18 +1,26 @@
+extension String {
+    var isNumeric: Bool {
+        return Double(self) != nil
+    }
+}
+
 class Solution {
     func reorderLogFiles(_ logs: [String]) -> [String] {
-        var digitLogs: [String] = []
-        var letterLogs: [String] = []
+        let numberLogs = logs.filter { $0.split(separator: " ").map { String($0) }[1].isNumeric }
+        var letterLogs = logs.filter { !$0.split(separator: " ").map { String($0) }[1].isNumeric }
 
-        for log in logs {
-            let data = log.split(separator: " ")
-            if data[1].isdigit() {
-                digitLogs.append(data)
-            } else {
-                letterLogs.append(data)
+        letterLogs.sort(by: { (lhs, rhs) -> Bool in
+            let lhsArray = lhs.split(separator: " ")
+            let rhsArray = rhs.split(separator: " ")
+            let lhsContents = String(lhsArray[1...].joined(separator: " "))
+            let rhsContents = String(rhsArray[1...].joined(separator: " "))
+
+            if lhsContents == rhsContents {
+                return lhsArray[0] < rhsArray[0]
             }
-        }
-        print(digitLogs)
-        print(letterLogs)
-        return ["asd"]
+            return lhsContents < rhsContents
+        })
+
+        return letterLogs + numberLogs
     }
 }
