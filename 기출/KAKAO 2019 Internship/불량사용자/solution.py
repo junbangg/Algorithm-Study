@@ -17,7 +17,6 @@ def isValidCandidate(candidates, banned):
             return False
     return True
 
-
 def solution(user_id, banned_id):
     candidates = permutations(user_id, len(banned_id))
     banned = set()
