@@ -2,11 +2,14 @@ import sys
 sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
-# 특정 원소가 속한 집합을 찾는 함수
+# find 함수 path compression 기법 적용
 def find(parent, x):
-    if parent[x] == x:
-        return x
-    return find(parent, parent[x])
+    # if parent[x] == x:
+    #     return x
+    # return find(parent, parent[x])
+    if parent[x] != x:
+        parent[x] = find(parent, x)
+    return parent[x]
 
 # 두 원소가 속한 집합을 합치기
 def union(parent, a, b):
