@@ -1,3 +1,4 @@
+# 
 def solution(k, room_number):
     dic = {}
     for num in range(1, k+1):
