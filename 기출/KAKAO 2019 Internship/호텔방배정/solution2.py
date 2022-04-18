@@ -1,3 +1,5 @@
+import sys
+sys.setrecursionlimit(10**6)
 def find(parents, a):
     if parents[a] != a:
         parents[a] = find(parents, parents[a])
