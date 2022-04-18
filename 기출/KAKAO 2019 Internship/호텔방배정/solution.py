@@ -1,4 +1,5 @@
-# 
+import sys
+sys.setrecursionlimit(10**6)
 def solution(k, room_number):
     dic = {}
     for num in range(1, k+1):
@@ -18,8 +19,6 @@ def getVacantSpot(dic, number, k):
         return number
     if number < k:
         return getVacantSpot(dic, number+1, k)
-    else:
-        return getVacantSpot(dic, 1, k)
 k = 1
 tc = [10]
 print(solution(k, tc))
