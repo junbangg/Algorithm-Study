@@ -1,4 +1,5 @@
 from itertools import combinations
+
 def solution(relation):
     answer = 0
     relation = list(map(list,zip(*relation)))
@@ -29,5 +30,4 @@ def solution(relation):
         if len(check) == len(set(check)):
             candidates.append(comb)
             answer += 1
-    # print('candidates', candidates)
     return answer
