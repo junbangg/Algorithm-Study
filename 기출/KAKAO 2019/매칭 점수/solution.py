@@ -24,7 +24,7 @@ def getWordScore():
 
 def solution(word, pages):
     answer = 0
-    for data in word.split("</html>"):
+    for data in pages.split("head>\n"):
         print(data)
-        
+
     return answer

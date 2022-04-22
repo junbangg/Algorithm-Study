@@ -1,4 +1,4 @@
-from collections import OrderedDict
+from collections import defaultdict
 
 def convertToOutputStrings(info, uid_currentID):
     outputStrings = []
@@ -12,7 +12,7 @@ def convertToOutputStrings(info, uid_currentID):
     return outputStrings
 
 def solution(record):
-    uid_currentID = OrderedDict()
+    uid_currentID = defaultdict(str)
     outputInfo = []
 
     for data in record:
@@ -28,10 +28,4 @@ def solution(record):
             if command == "Enter":
                 outputInfo.append([uid, command])
             uid_currentID[uid] = nickname
-    print(uid_currentID)
-    print(outputInfo)
     return convertToOutputStrings(outputInfo, uid_currentID)
-
-    
-
-

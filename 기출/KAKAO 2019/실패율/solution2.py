@@ -9,20 +9,16 @@
 
 # 4 [ 실패율에 맞는 stage 번호 ] 리턴
 def solution(N, stages):
-    
-    data = {} # {stage 번호: 실패율 }
+    stage_failRate = {}
     attempts = len(stages)
     for stage in range(1, N+1):
-        # 도전자
         if attempts > 0:
             fail = stages.count(stage)
-            data[stage] = fail / attempts
+            stage_failRate[stage] = fail / attempts
             attempts -= fail
         else:
-            data[stage] = 0
-    answer = sorted(data, key = lambda x: data[x], reverse = True)
-    
-    return answer
+            stage_failRate[stage] = 0
+    return sorted(stage_failRate, key = lambda x: stage_failRate[x], reverse = True)
 
 # N = 6
 # stages = [2, 1, 2, 5, 2, 4, 3, 3]
