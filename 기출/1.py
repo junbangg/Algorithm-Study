@@ -17,7 +17,7 @@ def solution(record):
         fifo_value += value * amount
         soldAmount -= amount
     if fifo and soldAmount > 0:
-        value, amount = fifo.popleft()d
+        value, amount = fifo.popleft()
         fifo_value += value * min(amount, soldAmount)
     # lifo
     lifo_value = 0
