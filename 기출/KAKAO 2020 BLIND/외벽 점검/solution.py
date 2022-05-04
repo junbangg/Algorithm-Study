@@ -8,6 +8,7 @@ def solution(n, weak, dist):
         for friends in permutations(dist, len(dist)):
             friendPointer = 1
             currentPointer = start
+            # next pointer
             for i in range(1, weakSize):
                 nextPointer = start + i
                 diff = weak[nextPointer] - weak[currentPointer]

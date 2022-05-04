@@ -18,6 +18,7 @@ def solution(msg):
             dic[currentString + msg[nextIndex]] = lastNumber
             lastNumber += 1
         currentIndex = nextIndex
+    print(dic)
     return answer
 tc = 'KAKAO'
 print(solution(tc))
