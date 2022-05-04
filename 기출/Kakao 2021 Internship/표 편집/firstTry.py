@@ -1,5 +1,3 @@
-from gettext import find
-
 
 def solution(n, k, cmd):
     answer = ['O'] * n

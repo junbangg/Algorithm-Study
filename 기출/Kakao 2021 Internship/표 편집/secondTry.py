@@ -7,20 +7,18 @@ def solution(n, k, cmd):
     def delete(index):
         exists[index] = 0
         deleteStack.append(index)
-        if down[index] != -1:
-            up[down[index]] = up[index]
-        if up[index] != -1:
-            down[up[index]] = down[index]
-        nextIndex = down[index] if down[index] != -1 else up[index]
+        nextIndex = down[index]
+        if index == n - 1:
+            nextIndex = up[index]
+        up[down[index]] = up[index]
+        down[up[index]] = down[index]
 
         return nextIndex
 
     def restore():
         restored = deleteStack.pop()
-        if up[restored] != -1:
-            down[up[restored]] = restored
-        if down[restored] != -1:
-            up[down[restored]] = restored
+        up[down[restored]] = restored
+        down[up[restored]] = restored
         exists[restored] = 1
 
     def goDown(index, moves):
