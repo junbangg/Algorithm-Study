@@ -1,8 +1,4 @@
 
-from sys import prefix
-from venv import create
-
-
 def createPrefix(board, skills):
     for type, r1, c1, r2, c2, degree in skills:
         board[r1][c1] += degree if type == 2 else -degree
