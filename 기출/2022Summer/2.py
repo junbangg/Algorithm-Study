@@ -1,12 +1,12 @@
 def getManhattanDistance(x1, y1, x2, y2):
-    distance = abs(x2 - x1) + abs(y2 - y1)
-    return distance
+    return abs(x2 - x1) + abs(y2 - y1)
 
-def getOptimal(L, R, targetX, targetY):
+def getOptimalHand(L, R, targetX, targetY):
     x1, y1 = L[0], L[1]
     x2, y2 = R[0], R[1]
     leftDistance = getManhattanDistance(x1, y1, targetX, targetY)
     rightDistance = getManhattanDistance(x2, y2, targetX, targetY)
+
     if leftDistance < rightDistance:
         return 'L'
     if rightDistance < leftDistance:
@@ -32,16 +32,16 @@ def solution(line):
     answer = []
     L = [1, 0]
     R = [1, 9]
+
     for target in line:
         targetX, targetY = keyboard[target][0], keyboard[target][1]
-        optimal = getOptimal(L, R, targetX, targetY)
-        if optimal == 'L':
+        optimalHand = getOptimalHand(L, R, targetX, targetY)
+        if optimalHand == 'L':
             answer.append(0)
             L[0], L[1] = targetX, targetY
         else:
             answer.append(1)
             R[0], R[1] = targetX, targetY
-
     return answer
 
 tc = "RYI76"
