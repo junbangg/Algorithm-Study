@@ -1,11 +1,5 @@
 import Foundation
 
-func printBoard(_ board: [[Int]]) {
-    for i in 0..<board.count {
-        print(board[i])
-    }
-}
-
 func isMeltable(_ board: [[Int]], _ x: Int, _ y: Int, _ dx: [Int], _ dy: [Int]) -> Bool {
     var count = 0
     
@@ -21,7 +15,6 @@ func isMeltable(_ board: [[Int]], _ x: Int, _ y: Int, _ dx: [Int], _ dy: [Int]) 
     return count >= 2 ? true : false
 }
 
-
 func bfs(_ src_x: Int, _ src_y: Int, _ board: inout [[Int]]) -> Bool {
     let xLimit = board.count
     let yLimit = board[0].count
@@ -30,7 +23,6 @@ func bfs(_ src_x: Int, _ src_y: Int, _ board: inout [[Int]]) -> Bool {
     var visited = Array(repeating: Array(repeating: false, count: yLimit), count: xLimit)
     var cheeseAirCount = Array(repeating: Array(repeating: 0, count: yLimit), count: xLimit)
     var q: [[Int]] = []
-    var meltableCheese: [(Int, Int)] = []
     
     visited[src_x][src_y] = true
     q.append([src_x, src_y]) // x, y
@@ -65,6 +57,7 @@ func bfs(_ src_x: Int, _ src_y: Int, _ board: inout [[Int]]) -> Bool {
         counter += 1
     }
     var isMelted = false
+
     for x in 0..<xLimit {
         for y in 0..<yLimit {
             if cheeseAirCount[x][y] >= 2 {
@@ -73,10 +66,6 @@ func bfs(_ src_x: Int, _ src_y: Int, _ board: inout [[Int]]) -> Bool {
             }
         }
     }
-//    for (x, y) in meltableCheese {
-//        board[x][y] = 0
-//    }
-    printBoard(board)
     return isMelted
 }
 
@@ -99,12 +88,3 @@ while true {
 }
 
 print(time)
-
-// 0 0 0 0 0 0 0 0 0
-// 0 0 0 0 0 0 0 0 0
-// 0 1 1 0 0 0 1 1 0
-// 0 1 0 1 1 1 0 1 0
-// 0 1 0 0 1 0 0 1 0
-// 0 1 0 1 1 1 0 1 0
-// 0 1 1 0 0 0 1 1 0
-// 0 0 0 0 0 0 0 0 0
