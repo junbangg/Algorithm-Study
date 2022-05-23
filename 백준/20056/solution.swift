@@ -1,8 +1,8 @@
 import Foundation
 
 struct Fireball {
-    let x: Int
-    let y: Int
+    var x: Int
+    var y: Int
     let mass: Int
     let direction: Int
     let speed: Int
@@ -16,14 +16,18 @@ struct Fireball {
         let dx = [-1, -1, 0, 1, 1, 1, 0, -1]
         let dy = [0, 1, 1, 1, 0, -1, -1, -1]
 
-        let distance = self.speed % boardLength
-        var nx = self.x + dx[self.direction] * distance
-        var ny = self.y + dy[self.direction] * distance
+        var nx = (self.x + dx[self.direction] * self.speed) % boardLength
+        var ny = (self.y + dy[self.direction] * self.speed) % boardLength
 
-        nx = nx < 0 ? N + nx : nx
-        ny = ny < 0 ? N + ny : ny
+        nx = nx < 0 ? boardLength - 1 + nx : nx
+        ny = ny < 0 ? boardLength - 1 + ny : ny
         
         return (nx % boardLength, ny % boardLength)
+    }
+
+    mutating func changePosition(x: Int, y: Int) {
+        self.x = x
+        self.y = y
     }
 }
 
@@ -31,15 +35,16 @@ func multiplyFireballs(x: Int, y: Int, fireballs: [Fireball]) -> [Fireball]? {
     let originalLength = fireballs.count
     let newMass = fireballs.reduce(0) { partialResult, fireball in
         return partialResult + fireball.mass
-    } / fireballs.count
+    } / 5
     let newSpeed = fireballs.reduce(0) { partialResult, fireball in
         return partialResult + fireball.speed
     } / fireballs.count
-    let isAllEven = fireballs.filter { $0.speed % 2 == 0 }
+    let isAllEven = fireballs.filter { $0.direction % 2 == 0 }
         .count == originalLength ? true : false
-    let isAllOdd = fireballs.filter { $0.speed % 2 != 0 }
+    let isAllOdd = fireballs.filter { $0.direction % 2 != 0 }
         .count == originalLength ? true : false
     let newDirections = isAllOdd || isAllEven ? [0, 2, 4, 6] : [1, 3, 5, 7]
+
     
     if newMass == 0 {
         return nil
@@ -60,28 +65,34 @@ func multiplyFireballs(x: Int, y: Int, fireballs: [Fireball]) -> [Fireball]? {
     
     return newFireballs
 }
+
 func simulate(_ board: inout [[[Fireball]]], _ fireballs: [Fireball]) -> [Fireball] {
     let boardLength = board.count
     //move
     for fireball in fireballs {
+        var fireball = fireball
         let (x, y) = fireball.currentPosition
         let (nx, ny) = fireball.getNextPosition(boardLength: boardLength)
 
         board[x][y].removeLast() // checkout
+        fireball.changePosition(x: nx, y: ny)
         board[nx][ny].append(fireball)
     }
-
+    print("moved!")
+    printBoard(board)
     var newFireballs: [Fireball] = []
     // apply fireball
     for x in 0..<boardLength {
         for y in 0..<boardLength {
             if board[x][y].count > 1 {
-                guard let multipliedFireballs = multiplyFireballs(x: x, y: y, fireballs: fireballs) else {
+                guard let multipliedFireballs = multiplyFireballs(x: x, y: y, fireballs: board[x][y]) else {
                     board[x][y] = []
                     continue
                 }
                 board[x][y] = multipliedFireballs
                 newFireballs.append(contentsOf: multipliedFireballs)
+            } else if board[x][y].count == 1 {
+                newFireballs.append(contentsOf: board[x][y])
             }
         }
     }
@@ -123,8 +134,8 @@ for _ in 0..<M {
     let x = data[0]-1
     let y = data[1]-1
     let mass = data[2]
-    let direction = data[3]
-    let speed = data[4]
+    let speed = data[3]
+    let direction = data[4]
 
     let fireball = Fireball(
         x: x,
@@ -138,10 +149,15 @@ for _ in 0..<M {
     board[x][y].append(fireball)
 }
 
-printBoard(board)
-for _ in 0..<K {
+
+for i in 0..<K {
+    print(i)
+    print("Before")
+    print(fireballs)
+    printBoard(board)
     fireballs = simulate(&board, fireballs)
-    print(getFireballMassTotal(of: board))
+    print("After ")
+    print(fireballs)
     printBoard(board)
 }
 
