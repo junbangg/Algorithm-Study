@@ -1,4 +1,5 @@
 import Foundation
+
 func find(_ parent: inout [Int], _ node: Int) -> Int {
     if parent[node] != node {
         parent[node] = find(&parent, parent[node])
