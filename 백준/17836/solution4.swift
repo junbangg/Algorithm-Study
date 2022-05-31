@@ -11,8 +11,6 @@ func solution(_ N: Int, _ M: Int, _ T: Int, _ board: [[Int]]) -> Int {
     var q: [(Int, Int, Int)] = [(0, 0, 0)]
     var swordTime = Int.max
     var swordlessTime = Int.max
-    var nx = 0
-    var ny = 0
     var counter = 0
     visited[0][0] = true
 
@@ -20,8 +18,8 @@ func solution(_ N: Int, _ M: Int, _ T: Int, _ board: [[Int]]) -> Int {
         let (x, y, currentTime) = q[counter]
 
         for i in 0..<4 {
-            nx = x + dx[i]
-            ny = y + dy[i]
+            let nx = x + dx[i]
+            let ny = y + dy[i]
 
             if 0 > nx || N <= nx || 0 > ny || M <= ny || visited[nx][ny] || board[nx][ny] == 1 {
                 continue
