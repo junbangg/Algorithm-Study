@@ -35,7 +35,7 @@ import sys
 def solution(grid, k):
     dx, dy = [1, -1, 0, 0], [0, 0, 1, -1]
     answer = sys.maxsize
-    days = [[sys.maxsize for _ in range(len(grid[0]))] for _ in range(len(grid))]
+    days = [[[False, sys.maxsize] for _ in range(len(grid[0]))] for _ in range(len(grid))]
     q = deque()
     days[0][0] = 0
     q.append([0, 0, 1, 0]) # x, y, chances, sleepCount
