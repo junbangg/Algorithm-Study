@@ -1,2 +1,0 @@
-# solved
-def solution():
